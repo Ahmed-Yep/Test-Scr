@@ -1,12 +1,13 @@
 {
-  "id": "Ompala4",
-  "name": "Ompala4",
-  "type": "scraping",
+  "id": "Khasha3",
+  "name": "Khasha3",
+  "type": "custom",
   "description": "Imported workflow from hel-go/Test-Scr/Test-Scr",
   "targetUrl": "https://example.com",
   "enabled": true,
-  "createdAt": "2026-03-19T21:33:56.152Z",
+  "createdAt": "2026-03-21T14:56:59.767Z",
   "source": "imported-workflow",
-  "originalFilename": "Ompala4.yml",
-  "importedFrom": "hel-go/Test-Scr"
+  "originalFilename": "Khasha3.yml",
+  "importedFrom": "hel-go/Test-Scr",
+  "filePath": ".github/workflows/Khasha3.yml"
 }
