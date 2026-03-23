@@ -1,0 +1,14 @@
+{
+  "name": "khasha3",
+  "version": "1.0.0",
+  "description": "Imported workflow from hel-go/Test-Scr/Test-Scr",
+  "type": "module",
+  "scripts": {
+    "workflow": "Khasha3.yml"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
