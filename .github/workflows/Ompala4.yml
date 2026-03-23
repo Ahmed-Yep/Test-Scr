@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
   workflow_dispatch: 
   schedule: 
-    - cron: '2 */1 * * *'
+    - cron: '35 * * * *'
 jobs:   
   emulator-video: 
     runs-on: ubuntu-latest
@@ -62,32 +62,37 @@ jobs:
             adb shell dumpsys battery set ac $charging_state
             adb shell dumpsys battery set level $battery_level
             adb shell am start -a android.intent.action.VIEW -d "https://rescend.netlify.app/"
-            sleep 7
+            sleep 10
             adb exec-out screencap -p > screenshot_menu.png
             # قبول بالاناقة
-            adb shell input tap 543 1615
+            adb shell input tap 543 2745
             sleep 2
-            adb shell input tap 543 1555
+            adb shell input tap 580 2635
             sleep 1
-            adb shell input tap 315 1095
-            adb shell input tap 543 1415
-            sleep 5
-            adb shell input tap 315 1095
-            adb shell input tap 543 1615
+            # Wait
+            adb shell input tap 445 1700
+            # retry
+            adb shell input tap 722 2340
+            sleep 6
+            # Wait
+            adb shell input tap 445 1700
+            adb shell input tap 543 2745
             sleep 1
-            adb shell input tap 543 1555
+            adb shell input tap 580 2635
             # # قبول الشروط
             # adb shell input tap 543 1704
             # adb shell input tap 543 1544
             # adb shell input tap 543 1654
             # adb shell input tap 543 1560
             sleep 2
-            adb shell input tap 145 1690
-            adb shell input tap 195 1695
+            adb shell input tap 165 2888
+            # adb shell input tap 195 1695
             sleep 19
             adb exec-out screencap -p > screenshot_open.png
-            adb shell input tap 315 1095
-            adb shell input tap 615 1475
+            # adb shell input tap 315 1095
+            # adb shell input tap 615 1475
+            adb shell input tap 445 1700
+            adb shell input tap 777 2200
             sleep 2
             adb shell input tap 520 1380
             sleep 2
@@ -100,17 +105,16 @@ jobs:
             adb shell input swipe 500 1500 500 200
             adb shell input swipe 540 500 540 -1500 
             sleep 2
-            adb shell input swipe 540 1500 540 200 
-            adb shell input swipe 540 1500 540 100 500
-            adb shell input swipe 540 1500 540 100 
+            adb shell input swipe 540 2500 540 300 
+            adb shell input swipe 540 2500 540 300 250
+            # adb shell input swipe 540 1500 540 100 
             sleep 2
-            adb shell input swipe 540 1500 540 200 
             # adb exec-out screencap -p > screenshot_desk.png
-            adb shell input tap 150 1600
+            adb shell input tap 150 2400
             # sleep 2
-            adb shell input tap 150 1600
+            adb shell input tap 150 2500
             sleep 2
-            adb shell input tap 200 1625
+            adb shell input tap 200 2625
             sleep 8
             adb exec-out screencap -p > screenshot_btton.png
             # adb shell cmd statusbar expand-notifications
@@ -120,33 +124,3 @@ jobs:
             # adb shell pm list packages /> apps.txt
 
            
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: emulator-artifacts
-          path: |
-            # demo.mp4
-            # demo.webm
-            # screenshot_accept.png
-            # screenshot_autube.png
-            # screenshot_confirm.png
-            # screenshot_extra.png
-            # screenshot_open.png
-            # screenshot_scroll2.png
-            # screenshot_scroll4.png
-            # screenshot_scroll6.png
-            apps.txt
-      - name: Upload screenshots
-        uses: actions/upload-artifact@v4
-        with:
-          name: firefox-screenshots
-          path: |
-            # screenshot_install.png
-            # screenshot_installed.png
-            screenshot_open.png
-            # screenshot_scroll.png
-            # screenshot_login.png
-            screenshot_menu.png
-            screenshot_desk.png
-            screenshot_btton.png
-            screenshot_notifi.png
