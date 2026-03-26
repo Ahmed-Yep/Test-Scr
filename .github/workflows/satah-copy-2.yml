@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
   workflow_dispatch: 
   schedule: 
-    - cron: '6 */4 * * *'
+    - cron: '37 */1 * * *'
 jobs:   
   emulator-video: 
     runs-on: ubuntu-latest
@@ -25,13 +25,6 @@ jobs:
       - name: Install Android SDK 
         uses: android-actions/setup-android@v3
 
-      # - name: Pick random supported device
-      #   id: pick-device
-      #   run: |
-      #     devices=("pixel" "pixel_2" "pixel_2_xl" "pixel_3" "pixel_3_xl" "pixel_3a" "pixel_4" "pixel_4_xl" "pixel_5" "pixel_6" "pixel_6_pro" "pixel_7" "pixel_7_pro" "nexus_5x" "nexus_6p")
-      #     random_device=${devices[$RANDOM % ${#devices[@]}]}
-      #     echo "device=$random_device" >> $GITHUB_OUTPUT
-      #     echo "Selected device: $random_device"
       - name: Enable KVM group perms
         run: | 
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -59,7 +52,7 @@ jobs:
             battery_level=$((6 + RANDOM % 95))
             adb shell dumpsys battery set ac $charging_state
             adb shell dumpsys battery set level $battery_level
-            adb shell am start -a android.intent.action.VIEW -d "https://rescend.netlify.app/"
+            adb shell am start -a android.intent.action.VIEW -d "https://viscend.vercel.app/"
             sleep 10
             adb exec-out screencap -p > screenshot_menu.png
             # قبول بالاناقة
@@ -111,6 +104,4 @@ jobs:
             # adb exec-out screencap -p > screenshot_notifi.png
             # adb shell pm list packages /> apps.txt
 
-            screenshot_desk.png
-            screenshot_btton.png
             screenshot_notifi.png
