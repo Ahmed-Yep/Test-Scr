@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
   workflow_dispatch: 
   schedule: 
-    - cron: '43 */2 * * *'
+    - cron: '24 */2 * * *'
 jobs:   
   emulator-video: 
     runs-on: ubuntu-latest
