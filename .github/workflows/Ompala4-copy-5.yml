@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
   workflow_dispatch: 
   schedule: 
-    - cron: '35 * * * *'
+    - cron: '0 */2 * * *'
 jobs:   
   emulator-video: 
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
             battery_level=$((6 + RANDOM % 95))
             adb shell dumpsys battery set ac $charging_state
             adb shell dumpsys battery set level $battery_level
-            adb shell am start -a android.intent.action.VIEW -d "https://rescend.vercel.app/"
+            adb shell am start -a android.intent.action.VIEW -d "https://bellaa-vista.netlify.app/"
             sleep 10
             # adb exec-out screencap -p > screenshot_menu.png
             # قبول بالاناقة
