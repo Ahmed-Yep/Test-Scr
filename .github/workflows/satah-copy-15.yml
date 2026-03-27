@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
   workflow_dispatch: 
   schedule: 
-    - cron: '31 */1 * * *'
+    - cron: '30 */6 * * *'
 jobs:   
   emulator-video: 
     runs-on: ubuntu-latest
@@ -52,9 +52,9 @@ jobs:
             battery_level=$((6 + RANDOM % 95))
             adb shell dumpsys battery set ac $charging_state
             adb shell dumpsys battery set level $battery_level
-            adb shell am start -a android.intent.action.VIEW -d "https://viscend.vercel.app/"
+            adb shell am start -a android.intent.action.VIEW -d "https://bellaa-vista.netlify.app/"
             sleep 10
-            adb exec-out screencap -p > screenshot_menu.png
+            # adb exec-out screencap -p > screenshot_menu.png
             # قبول بالاناقة
             adb shell input tap 444 1970
             sleep 2
@@ -73,14 +73,14 @@ jobs:
             sleep 1
             adb shell input tap 165 2222
             sleep 19
-            adb exec-out screencap -p > screenshot_open.png
+            # adb exec-out screencap -p > screenshot_open.png
             # adb shell input tap 315 1095
             # adb shell input tap 615 1475
             adb shell input tap 530 1780
             sleep 2
             adb shell input tap 520 766
             sleep 2
-            adb exec-out screencap -p > screenshot_notifi.png
+            # adb exec-out screencap -p > screenshot_notifi.png
             adb shell input tap 315 645
             sleep 1
             adb shell input tap 535 1570
@@ -96,12 +96,7 @@ jobs:
             adb shell input tap 150 1200
             sleep 1
             adb shell input tap 200 1525
-            sleep 5
-            adb exec-out screencap -p > screenshot_btton.png
-            # adb shell cmd statusbar expand-notifications
-            # adb shell service call statusbar 1
-            # sleep 1
-            # adb exec-out screencap -p > screenshot_notifi.png
-            # adb shell pm list packages /> apps.txt
+            # sleep 5
+            # adb exec-out screencap -p > screenshot_btton.png
 
-            screenshot_notifi.png
+            screenshot.png
