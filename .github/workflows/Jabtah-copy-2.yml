@@ -7,7 +7,7 @@ on:
     branches: [ "main" ] 
   workflow_dispatch: 
   schedule: 
-    - cron: '18 */2 * * *'
+    - cron: '0 */9 * * *'
 jobs:   
   emulator-video: 
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
             battery_level=$((6 + RANDOM % 95))
             adb shell dumpsys battery set ac $charging_state
             adb shell dumpsys battery set level $battery_level
-            adb shell am start -a android.intent.action.VIEW -d "https://rescend.netlify.app/"
+            adb shell am start -a android.intent.action.VIEW -d "https://bellaa-vista.netlify.app/"
             sleep 10
             # adb exec-out screencap -p > screenshot_menu.png
             # قبول بالاناقة
@@ -80,7 +80,7 @@ jobs:
             # adb exec-out screencap -p > screenshot_notifi.png
             adb shell input tap 315 645
             sleep 5
-            adb shell am start -a android.intent.action.VIEW -d "https://rescend.netlify.app/"
+            adb shell am start -a android.intent.action.VIEW -d "https://bellaa-vista.netlify.app/"
             sleep 20
             adb shell input tap 555 1740
             adb shell input tap 535 1570
@@ -89,7 +89,7 @@ jobs:
             adb shell input swipe 500 1500 500 500
             adb shell input swipe 540 500 540 -1500 
             sleep 1
-            adb shell am start -a android.intent.action.VIEW -d "https://rescend.netlify.app/"
+            adb shell am start -a android.intent.action.VIEW -d "https://bellaa-vista.netlify.app/"
             sleep 20
             adb shell input tap 555 1740
             adb shell input tap 535 1570
@@ -101,5 +101,5 @@ jobs:
             adb shell input tap 150 2000
             sleep 1
             adb shell input tap 200 1900
-            sleep 5
+            # sleep 5
             # adb exec-out screencap -p > screenshot_btton.png
